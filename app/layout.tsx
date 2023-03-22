@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body
         className={cn(
-          'font-sans h-screen bg-white text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white',
+          'font-sans h-screen overflow-hidden bg-white text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white',
           inter.variable,
           raleway.variable
         )}
