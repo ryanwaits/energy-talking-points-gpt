@@ -18,15 +18,17 @@ interface Conversation {
 const initialState: Conversation[] = [
   {
     id: 1,
-    text: 'Hello there! What would you like to know?',
+    text: 'Hello there! Feel free to kick us off with any energy or climate questions you have.',
     isUserMessage: false,
   },
 ];
 
 const initialSuggestions = [
-  'What are some positive side effects of fossil fules?',
-  'How effective are renewable energy sources, like solar and wind?',
+  'What exactly do 97% of climate scientists agree on?',
+  'Are there any mainstream ideas that we are told about energy and the climate that require a more nuanced discussion?',
   'Is net zero by 2050 realistic, or even a good idea?',
+  'If reducing emissions is a big concern, what is the best way to reduce emissions?',
+  'Is Nuclear energy as dangerous as we are told?',
 ];
 
 export function SearchQuery() {
@@ -186,11 +188,11 @@ export function SearchQuery() {
             </div>
           </div>
         </div>
-        <div className='flex space-x-3'>
+        <div className='grid grid-cols-3 gap-3'>
           {suggestions.map((suggestion) => (
             <div
               key={suggestion}
-              className='relative ml-3 cursor-pointer rounded-lg border border-[#f3f3f3] bg-[#fcfcfc] py-2 px-4 text-sm hover:border-[#ededed] hover:bg-[#f8f8f8]'
+              className='relative h-full cursor-pointer rounded-lg border border-[#f3f3f3] bg-[#fcfcfc] py-2 px-4 text-sm hover:border-[#ededed] hover:bg-[#f8f8f8]'
               onClick={() => search(suggestion)}
             >
               <div>
