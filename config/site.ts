@@ -8,10 +8,11 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'ryanwaits/ui',
-  description: 'Nextjs 13 starter template using @shadcn/ui components.',
+  name: 'energy-talking-points-gpt',
+  description:
+    'AI Energy Talking Points: A web app using OpenAI embeddings and Supabase to chat with energy and climate content from EnergyTalkingPoints.com.',
   links: {
     twitter: 'https://twitter.com/ryan_waits',
-    github: 'https://github.com/ryanwaits/ui',
+    github: 'https://github.com/ryanwaits/energy-talking-points-gpt',
   },
 };

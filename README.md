@@ -1,3 +1,3 @@
-# ryanwaits/ui
+# ryanwaits/energy-talking-points-gpt
 
-Nextjs 13 starter template using [@shadcn](https://github.com/shadcn/ui) components.
+AI Energy Talking Points: A web app using OpenAI embeddings and Supabase to chat with energy and climate content from EnergyTalkingPoints.com
