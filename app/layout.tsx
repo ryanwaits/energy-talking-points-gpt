@@ -30,7 +30,7 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          <div className='flex items-center gap-x-6 bg-gray-900 py-2.5 px-6 sm:px-3.5 sm:before:flex-1'>
+          {/* <div className='flex items-center gap-x-6 bg-gray-900 py-2.5 px-6 sm:px-3.5 sm:before:flex-1'>
             <p className='text-sm leading-6 text-white'>
               <a href='#'>
                 <strong className='font-semibold'>
@@ -40,7 +40,7 @@ export default function RootLayout({
               </a>
             </p>
             <div className='flex flex-1 justify-end'></div>
-          </div>
+          </div> */}
           {children}
         </ThemeProvider>
       </body>
