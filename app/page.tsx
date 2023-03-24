@@ -8,13 +8,12 @@ export default async function Home() {
       <main className='container m-3 flex h-full flex-col items-center justify-center overflow-y-scroll p-6'>
         <div className='flex h-screen w-full text-gray-800 antialiased'>
           <div className='flex h-full w-full flex-row overflow-x-hidden'>
-            <div className='flex h-full flex-auto flex-col space-y-12 p-6'>
+            <div className='flex h-full flex-auto flex-col p-6'>
               <div className='flex flex-col items-center gap-3'>
-                <h1 className='mt-2 text-4xl font-black'>
-                  Energy Talking Points
-                </h1>
+                <h1 className='mt-2 text-4xl font-black'>ChatETP</h1>
                 <p className='text-md mx-auto w-96 text-center'>
-                  Chat with Energy Talking Points, powered by OpenAI.
+                  Explore Energy Talking Points through conversation, powered by
+                  OpenAI.
                 </p>
                 <div className='flex gap-2'>
                   <a
