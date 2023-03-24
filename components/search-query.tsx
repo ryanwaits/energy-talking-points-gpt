@@ -99,12 +99,12 @@ export function SearchQuery() {
 
   return (
     <>
-      <div className='flex h-[40vh] flex-auto flex-shrink-0 flex-col space-y-6 rounded-2xl p-4'>
+      <div className='flex flex-auto flex-shrink-0 flex-col space-y-6 rounded-2xl p-4'>
         <div
-          className='flex h-full flex-col overflow-x-auto overflow-y-auto'
+          className='flex h-[50%] flex-col overflow-x-auto overflow-y-auto'
           ref={scrollableContainerRef}
         >
-          <div className='flex h-full flex-col'>
+          <div className='flex flex-col'>
             <div className='grid grid-cols-12 gap-y-2'>
               <AnimatePresence mode='popLayout' initial={false}>
                 {conversation.map((convo) => (
@@ -185,17 +185,20 @@ export function SearchQuery() {
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-3'>
-          {suggestions.map((suggestion) => (
-            <div
+        <div className='grid h-20 grid-cols-3 gap-3 py-4'>
+          {suggestions.map((suggestion, index) => (
+            <motion.div
               key={suggestion}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: index * 0.1 }}
               className='relative h-full cursor-pointer rounded-lg border border-[#f3f3f3] bg-[#fcfcfc] py-2 px-4 text-sm hover:border-[#ededed] hover:bg-[#f8f8f8]'
               onClick={() => search(suggestion)}
             >
               <div>
                 <p className='text-sm leading-5'>{suggestion}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
