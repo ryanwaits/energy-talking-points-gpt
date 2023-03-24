@@ -33,13 +33,6 @@ export default function RootLayout({
           <div className='flex items-center gap-x-6 bg-gray-900 py-2.5 px-6 sm:px-3.5 sm:before:flex-1'>
             <p className='text-sm leading-6 text-white'>
               <a href='#'>
-                <svg
-                  viewBox='0 0 2 2'
-                  className='mx-2 inline h-0.5 w-0.5 fill-current'
-                  aria-hidden='true'
-                >
-                  <circle cx={1} cy={1} r={1} />
-                </svg>
                 <strong className='font-semibold'>
                   Currently in Beta and may not always return information
                   reflected in source material

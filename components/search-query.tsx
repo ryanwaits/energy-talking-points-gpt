@@ -100,7 +100,7 @@ export function SearchQuery() {
 
   return (
     <>
-      <div className='flex h-[40vh] flex-auto flex-shrink-0 flex-col space-y-6 rounded-2xl p-4'>
+      <div className='flex h-[40vh] flex-auto flex-shrink-0 flex-col space-y-2 rounded-2xl p-4 sm:h-[50vh] md:space-y-6'>
         <div
           className='flex h-[55%] flex-col overflow-x-auto overflow-y-auto'
           ref={scrollableContainerRef}
@@ -128,8 +128,8 @@ export function SearchQuery() {
                     }}
                     className={
                       convo.isUserMessage
-                        ? 'message col-start-6 col-end-13 rounded-lg p-3'
-                        : 'message col-start-1 col-end-8 rounded-lg p-3'
+                        ? 'message col-start-1 col-end-13 rounded-lg p-3 md:col-start-6 md:col-end-13'
+                        : 'message col-start-1 col-end-13 rounded-lg p-3 md:col-start-1 md:col-end-8'
                     }
                   >
                     {convo.isUserMessage ? (
@@ -193,7 +193,7 @@ export function SearchQuery() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: index * 0.2 }}
-              className='relative h-full cursor-pointer rounded-lg border border-[#f3f3f3] bg-[#fcfcfc] py-2 px-4 text-sm hover:border-[#ededed] hover:bg-[#f8f8f8]'
+              className='relative col-span-3 h-full cursor-pointer rounded-lg border border-[#f3f3f3] bg-[#fcfcfc] py-2 px-4 text-sm hover:border-[#ededed] hover:bg-[#f8f8f8] md:col-span-1'
               onClick={() => search(suggestion)}
             >
               <div>
