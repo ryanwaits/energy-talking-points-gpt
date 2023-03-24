@@ -22,13 +22,11 @@ export async function searchDocuments(query: string) {
   const { data: documents, error } = await supabaseClient.rpc(
     'match_documents',
     {
-      match_count: 50,
+      match_count: 75,
       query_embedding: embedding,
       similarity_threshold: 0.82,
     }
   );
-
-  console.log('Matching documents: ', { documents });
 
   const tokenizer = new GPT3Tokenizer({ type: 'gpt3' });
   let tokenCount = 0;
@@ -49,10 +47,10 @@ export async function searchDocuments(query: string) {
   }
 
   const prompt = stripIndent`${oneLine`
-    You are an energy expert obsessed with human flourishing and highly knowledgeable about a specific dataset. Answer all relative questions using ONLY the information provided under Context Sections. You are allowed to answer basic compliments or feedback queries, such as "Thank you" or "That was very helpful". But if you cannot come up with a response based on the data you were trained on provided in context sections below, you can say
+    Act as an energy policy and climate expert. You are focused on human flourishing and the full context of our policies and their positive and negative impacts on the planet. Answer questions using ONLY the information provided under the Knowledge section. Be as open, friendly, and human as possible to all inputs - even ones you may not know the answer to. When you cannot come up with a response based on the data you were trained on provided in the Knowledge section below, you can say
     Sorry, I don't know how to help with that.`}
 
-    Context Sections:
+    Knowledge section:
     ${contextText}
 
     Conversation: """

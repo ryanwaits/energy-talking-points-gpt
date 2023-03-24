@@ -25,23 +25,39 @@ const initialState: Conversation[] = [
 
 const initialSuggestions = [
   'What exactly do 97% of climate scientists agree on?',
-  'Are there any mainstream ideas that we are told about energy and the climate that require a more nuanced discussion?',
-  'Is net zero by 2050 realistic, or even a good idea?',
-  'If reducing emissions is a big concern, what is the best way to reduce emissions?',
+  'Are there any mainstream ideas that we should be challenging when it comes to energy and the climate?',
   'Is Nuclear energy as dangerous as we are told?',
 ];
+
+async function getSuggestions(query: string) {
+  const response = await fetch('/api/search-query', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  if (response.ok) {
+    const { completion } = await response.json();
+    return completion;
+  } else {
+    const { error } = await response.json();
+    console.error('Error searching documents:', error);
+    return [];
+  }
+}
 
 export function SearchQuery() {
   const controls = useAnimation();
   const scrollableContainerRef = React.useRef(null);
-  const lastMessageRef = React.useRef(null);
   const [conversation, setConversation] =
     React.useState<Conversation[]>(initialState);
   const [query, setQuery] = React.useState('');
   const [suggestions, setSuggestions] =
     React.useState<string[]>(initialSuggestions);
 
-  async function search(query) {
+  async function search(query: string) {
     addMessage(query);
     setQuery('');
     const response = await fetch('/api/search-query', {
@@ -57,32 +73,11 @@ export function SearchQuery() {
       addMessage(completion, false);
       const suggestionPrompt = `In a consistent, numbered format (1. Q1, 2. Q2 3. Q3) Please generate 3 questions aimed at challenging, learning more, and/or moving the conversation forward based on the following response: ${completion}`;
       const data = await getSuggestions(suggestionPrompt);
-      console.log('Raw String: ', { data });
       const suggestions = data.split(/\d+\.\s+/).slice(1);
-      console.log('List of Suggestions: ', { suggestions });
       setSuggestions(suggestions);
     } else {
       const { error } = await response.json();
       console.error('Error searching documents:', error);
-    }
-  }
-
-  async function getSuggestions(query) {
-    const response = await fetch('/api/search-query', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
-
-    if (response.ok) {
-      const { completion } = await response.json();
-      return completion;
-    } else {
-      const { error } = await response.json();
-      console.error('Error searching documents:', error);
-      return [];
     }
   }
 
@@ -94,9 +89,11 @@ export function SearchQuery() {
   }
 
   React.useEffect(() => {
-    if (lastMessageRef.current && scrollableContainerRef.current) {
-      scrollableContainerRef.current.scrollTop =
-        scrollableContainerRef.current.scrollHeight;
+    if (scrollableContainerRef.current) {
+      const messages = scrollableContainerRef.current;
+      if (messages) {
+        messages.scrollTo({ top: messages.scrollHeight, behavior: 'smooth' });
+      }
     }
   }, [conversation]);
 
@@ -110,7 +107,7 @@ export function SearchQuery() {
           <div className='flex h-full flex-col'>
             <div className='grid grid-cols-12 gap-y-2'>
               <AnimatePresence mode='popLayout' initial={false}>
-                {conversation.map((convo, index) => (
+                {conversation.map((convo) => (
                   <motion.div
                     key={convo.id}
                     layout
@@ -130,8 +127,8 @@ export function SearchQuery() {
                     }}
                     className={
                       convo.isUserMessage
-                        ? 'col-start-6 col-end-13 rounded-lg p-3'
-                        : 'col-start-1 col-end-8 rounded-lg p-3'
+                        ? 'message col-start-6 col-end-13 rounded-lg p-3'
+                        : 'message col-start-1 col-end-8 rounded-lg p-3'
                     }
                   >
                     {convo.isUserMessage ? (
