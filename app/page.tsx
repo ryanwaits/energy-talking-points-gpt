@@ -5,10 +5,10 @@ import { SearchQuery } from '@/components/search-query';
 export default async function Home() {
   return (
     <>
-      <main className='flex h-full flex-col items-center justify-center p-0 md:p-6'>
+      <main className='flex h-full flex-col items-center justify-center p-3 md:p-6'>
         <div className='flex h-screen w-full text-gray-800 antialiased'>
           <div className='flex h-full w-full flex-row overflow-x-hidden'>
-            <div className='flex h-full flex-auto flex-col space-y-6 p-0 md:p-6'>
+            <div className='flex h-full flex-auto flex-col space-y-6 p-3 md:p-6'>
               <div className='flex flex-col items-center gap-3'>
                 <h1 className='mt-2 text-4xl font-black sm:text-3xl'>
                   ChatETP

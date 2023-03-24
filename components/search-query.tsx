@@ -102,7 +102,7 @@ export function SearchQuery() {
     <>
       <div className='flex h-[40vh] flex-auto flex-shrink-0 flex-col space-y-2 rounded-2xl p-4 sm:h-[50vh] md:space-y-6'>
         <div
-          className='flex h-[55%] flex-col overflow-x-auto overflow-y-auto'
+          className='flex h-[25vh] flex-col overflow-x-auto overflow-y-auto md:h-[55vh]'
           ref={scrollableContainerRef}
         >
           <div className='flex h-full flex-col'>
