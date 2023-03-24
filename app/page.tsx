@@ -14,8 +14,7 @@ export default async function Home() {
                   Energy Talking Points
                 </h1>
                 <p className='text-md mx-auto w-96 text-center'>
-                  Explore all the Energy Talking Points articles through
-                  conversation, powered by OpenAI.
+                  Chat with Energy Talking Points, powered by OpenAI.
                 </p>
                 <div className='flex gap-2'>
                   <a
