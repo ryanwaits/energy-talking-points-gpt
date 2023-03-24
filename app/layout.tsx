@@ -44,13 +44,6 @@ export default function RootLayout({
                   Currently in Beta and may not always return information
                   reflected in source material
                 </strong>
-                <svg
-                  viewBox='0 0 2 2'
-                  className='mx-2 inline h-0.5 w-0.5 fill-current'
-                  aria-hidden='true'
-                >
-                  <circle cx={1} cy={1} r={1} />
-                </svg>
               </a>
             </p>
             <div className='flex flex-1 justify-end'></div>

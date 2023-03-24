@@ -99,12 +99,12 @@ export function SearchQuery() {
 
   return (
     <>
-      <div className='flex flex-auto flex-shrink-0 flex-col space-y-6 rounded-2xl p-4'>
+      <div className='flex h-full flex-auto flex-shrink-0 flex-col space-y-3 rounded-2xl p-4'>
         <div
-          className='flex h-[50%] flex-col overflow-x-auto overflow-y-auto'
+          className='flex h-[40%] flex-col overflow-x-auto overflow-y-auto'
           ref={scrollableContainerRef}
         >
-          <div className='flex flex-col'>
+          <div className='flex h-full flex-col'>
             <div className='grid grid-cols-12 gap-y-2'>
               <AnimatePresence mode='popLayout' initial={false}>
                 {conversation.map((convo) => (
@@ -138,7 +138,7 @@ export function SearchQuery() {
                             size={35}
                             name='human-flourishing'
                             variant='beam'
-                            colors={['#3b82f6', '#2563eb', '#1d4ed8']}
+                            colors={['#2563eb', '#1d4ed8']}
                           />
                         </div>
                         <div className='relative mr-3 rounded-xl border border-[#f3f3f3] bg-white py-2 px-4 text-sm'>
@@ -166,7 +166,7 @@ export function SearchQuery() {
             <div className='flex items-center'>
               <Input
                 className='w-full border border-[#f3f3f3]'
-                placeholder='Search'
+                placeholder='Ask a question...'
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => {
@@ -176,7 +176,8 @@ export function SearchQuery() {
                 }}
               />
               <Button
-                className='font-sans transition-border-color transition-background m-0 ml-2 cursor-pointer whitespace-nowrap rounded-md bg-neutral-900 px-3 py-2 text-sm font-semibold text-white transition-shadow duration-200 hover:bg-neutral-900/95'
+                variant='default'
+                className='font-sans transition-border-color transition-background m-0 ml-2 cursor-pointer whitespace-nowrap rounded-md px-3 py-2 text-sm font-semibold hover:bg-neutral-900/95'
                 type='button'
                 onClick={() => search(query)}
               >
@@ -185,14 +186,14 @@ export function SearchQuery() {
             </div>
           </div>
         </div>
-        <div className='grid h-20 grid-cols-3 gap-3 py-4'>
+        <div className='grid h-20 grid-cols-3 gap-3'>
           {suggestions.map((suggestion, index) => (
             <motion.div
               key={suggestion}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: index * 0.1 }}
-              className='relative h-full cursor-pointer rounded-lg border border-[#f3f3f3] bg-[#fcfcfc] py-2 px-4 text-sm hover:border-[#ededed] hover:bg-[#f8f8f8]'
+              className='relative h-full cursor-pointer rounded-lg border border-[#f3f3f3] bg-white py-2 px-4 text-sm hover:border-[#f3f3f3] hover:bg-[#fcfcfc]'
               onClick={() => search(suggestion)}
             >
               <div>
