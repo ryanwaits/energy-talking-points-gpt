@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@/providers/theme';
 import { Inter, Raleway } from '@next/font/google';
-import { Analytics } from '@vercel/analytics/react';
 
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/site-header';
@@ -44,7 +43,6 @@ export default function RootLayout({
           </div> */}
           {children}
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );
