@@ -24,7 +24,7 @@ export async function searchDocuments(query: string) {
     {
       match_count: 200,
       query_embedding: embedding,
-      similarity_threshold: 0.86,
+      similarity_threshold: 0.84,
     }
   );
 
