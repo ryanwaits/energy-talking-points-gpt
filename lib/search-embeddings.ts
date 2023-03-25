@@ -22,9 +22,9 @@ export async function searchDocuments(query: string) {
   const { data: documents, error } = await supabaseClient.rpc(
     'match_documents',
     {
-      match_count: 75,
+      match_count: 200,
       query_embedding: embedding,
-      similarity_threshold: 0.82,
+      similarity_threshold: 0.86,
     }
   );
 
@@ -47,11 +47,10 @@ export async function searchDocuments(query: string) {
   }
 
   const prompt = stripIndent`${oneLine`
-    Act as an energy policy and climate expert. You are focused on human flourishing and the full context of our policies and their positive and negative impacts on the planet. Answer questions using ONLY the information provided under the Knowledge section. Be as open, friendly, and human as possible to all inputs - even ones you may not know the answer to. When you cannot come up with a response based on the data you were trained on provided in the Knowledge section below, you can say
-    Sorry, I don't know how to help with that.`}
+  As a language model trained to answer questions based on the provided custom dataset, your role is to analyze the following information and respond to the question. If no relevant documents are found in the dataset, please say "I currently do not have enough information to answer this question."`}
 
-    Knowledge section:
-    ${contextText}
+    Custom Dataset:
+    ${!!contextText ? contextText : 'No relevant documents found.'}
 
     Conversation: """
     ${query}
